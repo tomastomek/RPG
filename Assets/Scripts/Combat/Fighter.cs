@@ -25,10 +25,10 @@ namespace RPG.Combat
         private void Update()
         {
             timeSinceLastAttack += Time.deltaTime;
-            if (target.IsDead()) return;
 
             if (target)
             {
+                if (target.IsDead()) return;
                 mover.MoveTo(target.transform.position);
                 if (Vector3.Distance(transform.position, target.transform.position) <= weaponRange)
                 {
@@ -43,9 +43,15 @@ namespace RPG.Combat
             transform.LookAt(target.transform);
             if (timeSinceLastAttack >= timeBetweenAttacks)
             {
-                animator.SetTrigger("attack");
+                TriggerAttack();
                 timeSinceLastAttack = 0;
             }
+        }
+
+        private void TriggerAttack()
+        {
+            animator.ResetTrigger("stopAttack");
+            animator.SetTrigger("attack");
         }
 
         public void Attack(CombatTarget combatTarget)
@@ -56,21 +62,28 @@ namespace RPG.Combat
 
         public void Cancel()
         {
-            animator.SetTrigger("stopAttack");
+            StopAttack();
             target = null;
+        }
+
+        private void StopAttack()
+        {
+            animator.ResetTrigger("attack");
+            animator.SetTrigger("stopAttack");
         }
 
         // Animation event
         private void Hit()
         {
+            if (target == null) return;
             target.TakeDamage(weaponDamage);
         }
 
         public bool CanAttack(CombatTarget combatTarget)
         {
-            if (combatTarget == null) { return false };
+            if (combatTarget == null) { return false; }
             Health targetToTest = combatTarget.GetComponent<Health>();
-            return (target != null && !target.IsDead());
+            return (targetToTest != null && !targetToTest.IsDead());
         }
     }
 }
