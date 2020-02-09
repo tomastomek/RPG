@@ -25,8 +25,14 @@ namespace RPG.Combat
                 if (Vector3.Distance(transform.position, target.position) <= weaponRange)
                 {
                     mover.Cancel();
+                    AttackBehaviour();
                 }
             }
+        }
+
+        private void AttackBehaviour()
+        {
+            GetComponent<Animator>().SetTrigger("attack");
         }
 
         public void Attack(CombatTarget combatTarget)
@@ -38,6 +44,12 @@ namespace RPG.Combat
         public void Cancel()
         {
             target = null;
+        }
+
+        // Animation event
+        private void Hit()
+        {
+            
         }
     }
 }
