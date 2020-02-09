@@ -9,16 +9,10 @@ namespace RPG.Combat
         [SerializeField] float healthPoints = 100f;
 
         bool isDead = false;
-        // Start is called before the first frame update
-        void Start()
+
+        public bool IsDead()
         {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            return isDead;
         }
 
         public void TakeDamage(float damage)
