@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using RPG.Movement;
 using RPG.Core;
 
@@ -14,7 +12,7 @@ namespace RPG.Combat
 
         Health target;
         Mover mover;
-        float timeSinceLastAttack = 0;
+        float timeSinceLastAttack = Mathf.Infinity;
         Animator animator;
 
         private void Start()

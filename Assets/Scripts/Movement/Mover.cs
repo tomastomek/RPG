@@ -1,8 +1,4 @@
-﻿using RPG.Combat;
-using RPG.Core;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using RPG.Core;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -11,16 +7,19 @@ namespace RPG.Movement
     public class Mover : MonoBehaviour, IAction
     {
         NavMeshAgent navMeshAgent;
+        Health health;
 
         // Start is called before the first frame update
         void Start()
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
+            health = GetComponent<Health>();
         }
 
         // Update is called once per frame
         void Update()
         {
+            navMeshAgent.enabled = !health.IsDead();
             UpdateAnimator();
         }
 
