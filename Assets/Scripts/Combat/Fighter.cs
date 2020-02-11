@@ -27,7 +27,7 @@ namespace RPG.Combat
             if (target)
             {
                 if (target.IsDead()) return;
-                mover.MoveTo(target.transform.position);
+                mover.MoveTo(target.transform.position, 1f);
                 if (Vector3.Distance(transform.position, target.transform.position) <= weaponRange)
                 {
                     mover.Cancel();
