@@ -692,6 +692,11 @@ PrefabInstance:
       propertyPath: sceneToLoad
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 364556199689491480, guid: 7d2995a27d3e302428cd0db8c84d4012,
+        type: 3}
+      propertyPath: destination
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2066436536389670702, guid: 7d2995a27d3e302428cd0db8c84d4012,
         type: 3}
       propertyPath: m_LocalPosition.z
