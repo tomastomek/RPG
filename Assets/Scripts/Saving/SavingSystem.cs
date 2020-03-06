@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
@@ -14,10 +15,8 @@ namespace RPG.Saving
             print("Saving to " + path);
             using (FileStream stream = File.Open(path, FileMode.Create))
             {
-                Transform playerTransform = GetPlayerTransform();
                 BinaryFormatter binaryFormatter = new BinaryFormatter();
-                SerializableVector3 position = new SerializableVector3(playerTransform.position);
-                binaryFormatter.Serialize(stream, position);
+                binaryFormatter.Serialize(stream, CaptureState());
             }
         }
 
@@ -29,8 +28,7 @@ namespace RPG.Saving
             {
                 BinaryFormatter binaryFormatter = new BinaryFormatter();
                 SerializableVector3 playerPos = binaryFormatter.Deserialize(stream) as SerializableVector3;
-                Transform playerTransform = GetPlayerTransform();
-                playerTransform.position = playerPos.ToVector();
+                RestoreState(binaryFormatter.Deserialize(stream));
             }
         }
 
@@ -39,27 +37,23 @@ namespace RPG.Saving
             return Path.Combine(Application.persistentDataPath, saveFile + ".ssave");
         }
 
-        private Transform GetPlayerTransform()
+        private object CaptureState()
         {
-            return GameObject.FindGameObjectWithTag("Player").transform;
+            Dictionary<string, object> state = new Dictionary<string, object>();
+            foreach (SaveableEntity saveable in FindObjectsOfType<SaveableEntity>())
+            {
+                state.Add(saveable.GetUniqueIdentifier(), saveable.CaptureState());
+            }
+            return state;
         }
 
-        private byte[] SerializeVector(Vector3 vector)
+        private void RestoreState(object state)
         {
-            byte[] vectorBytes = new byte[3 * 4]; // jeden float má velikost 4 byte
-            BitConverter.GetBytes(vector.x).CopyTo(vectorBytes, 0);
-            BitConverter.GetBytes(vector.y).CopyTo(vectorBytes, 4);
-            BitConverter.GetBytes(vector.z).CopyTo(vectorBytes, 8);
-            return vectorBytes;
-        }
-
-        private Vector3 DeserializeVector(byte[] buffer)
-        {
-            Vector3 result = new Vector3();
-            result.x = BitConverter.ToSingle(buffer, 0);
-            result.y = BitConverter.ToSingle(buffer, 4);
-            result.z = BitConverter.ToSingle(buffer, 8);
-            return result;
+            Dictionary<string, object> stateDict = state as Dictionary<string, object>;
+            foreach (SaveableEntity saveable in FindObjectsOfType<SaveableEntity>())
+            {
+                saveable.RestoreState(stateDict[saveable.GetUniqueIdentifier()]);
+            }
         }
     }
 }
