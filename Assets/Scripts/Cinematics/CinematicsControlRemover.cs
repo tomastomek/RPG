@@ -15,12 +15,6 @@ namespace RPG.Cinematics
             GetComponent<PlayableDirector>().played += DisableControl;
             GetComponent<PlayableDirector>().stopped += EnableControl;
         }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
         void DisableControl(PlayableDirector playableDirector)
         {
             GameObject.FindWithTag("Player").GetComponent<ActionScheduler>().CancelCurrentAction();
