@@ -1,7 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using RPG.Core;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace RPG.Saving
 {
@@ -17,12 +17,17 @@ namespace RPG.Saving
 
         public object CaptureState()
         {
-            return null;
+            return new SerializableVector3(transform.position);
         }
 
         public void RestoreState(object state)
         {
-            Dictionary<string, object> stateDictionary = state as Dictionary<string, object>;
+            SerializableVector3 posState = state as SerializableVector3;
+            GetComponent<NavMeshAgent>().enabled = false;
+            transform.position = posState.ToVector();
+            GetComponent<NavMeshAgent>().enabled = true;
+            GetComponent<ActionScheduler>().CancelCurrentAction();
+
         }
 
         private void Update()
