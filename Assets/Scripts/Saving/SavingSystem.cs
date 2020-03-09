@@ -50,7 +50,16 @@ namespace RPG.Saving
         {
             foreach (SaveableEntity saveable in FindObjectsOfType<SaveableEntity>())
             {
-                state.Add(saveable.GetUniqueIdentifier(), saveable.CaptureState());
+                string id = saveable.GetUniqueIdentifier();
+                if (state.ContainsKey(id))
+                {
+                    state[id] = saveable.CaptureState();
+                } 
+                else
+                {
+                    state.Add(id, saveable.CaptureState());
+                }
+                    
             }
         }
 
