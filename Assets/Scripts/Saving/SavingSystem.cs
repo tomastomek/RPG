@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
 using UnityEngine;
 
 namespace RPG.Saving
@@ -59,7 +57,6 @@ namespace RPG.Saving
                 {
                     state.Add(id, saveable.CaptureState());
                 }
-                    
             }
         }
 
