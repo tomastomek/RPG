@@ -38,7 +38,7 @@ namespace RPG.Saving
                 }                
             }
         }
-
+#if UNITY_EDITOR
         private void Update()
         {
             if (string.IsNullOrEmpty(gameObject.scene.path)) return;
@@ -52,6 +52,7 @@ namespace RPG.Saving
             }
             globalLookup[serializedProperty.stringValue] = this;
         }
+#endif
 
         private bool IsUnique(string candidate)
         {
