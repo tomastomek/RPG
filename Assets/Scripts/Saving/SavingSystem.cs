@@ -1,12 +1,27 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace RPG.Saving
 {
     public class SavingSystem : MonoBehaviour
     {
+        public IEnumerator LoadLastScene(string saveFile)
+        {
+            Dictionary<string, object> state = LoadFile(saveFile);
+            if (state.ContainsKey("lastSceneBuildIndex"))
+            {
+                if ((int)state["lastSceneBuildIndex"] != SceneManager.GetActiveScene().buildIndex)
+                {
+                    yield return SceneManager.LoadSceneAsync((int)state["lastSceneBuildIndex"]);
+                }
+            }            
+            RestoreState(state);
+        }
+
         public void Save(string saveFile)
         {
             Dictionary<string, object> state = LoadFile(saveFile);
@@ -57,6 +72,7 @@ namespace RPG.Saving
                 {
                     state.Add(id, saveable.CaptureState());
                 }
+                state["lastSceneBuildIndex"] = SceneManager.GetActiveScene().buildIndex; // state[klic] pokud neexistuje klíč, tak ho vytvoří, pokud existuje, tak ho aktualizuje
             }
         }
 
