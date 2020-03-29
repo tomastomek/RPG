@@ -13,7 +13,6 @@ namespace RPG.Combat
                 other.GetComponent<Fighter>().EquipWeapon(weapon);
                 Destroy(gameObject);
             }
-            Debug.Log("Picked up a " + other.name);
         }
     }
 }

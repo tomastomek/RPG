@@ -13,12 +13,15 @@ namespace RPG.Combat
         [SerializeField] bool isRightHanded = true;
         [SerializeField] Projectile projectile = null;
 
+        static GameObject weaponInstance;
+
         public void Spawn(Transform rightHand, Transform leftHand, Animator animator)
         {
             if (equippedPrefab != null)
             {
+                if (weaponInstance != null) Destroy(weaponInstance.gameObject);
                 Transform handTransform = GetTransform(rightHand, leftHand);
-                Instantiate(equippedPrefab, handTransform);
+                weaponInstance = Instantiate(equippedPrefab, handTransform);
             }
             if (animatorOverride != null)
             {
