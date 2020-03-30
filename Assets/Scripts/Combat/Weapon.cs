@@ -23,9 +23,16 @@ namespace RPG.Combat
                 Transform handTransform = GetTransform(rightHand, leftHand);
                 weaponInstance = Instantiate(equippedPrefab, handTransform);
             }
+
+            var overrideController = animator.runtimeAnimatorController as AnimatorOverrideController;
+
             if (animatorOverride != null)
             {
                 animator.runtimeAnimatorController = animatorOverride;
+            }
+            else if (overrideController != null)
+            {
+                animator.runtimeAnimatorController = overrideController.runtimeAnimatorController;
             }
         }
 
