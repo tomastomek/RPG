@@ -147,6 +147,11 @@ PrefabInstance:
       propertyPath: healthPoints
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 4980224625585810924, guid: 17bd676e603a5e24ab546a3da13176fd,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8927254699919451214, guid: 17bd676e603a5e24ab546a3da13176fd,
         type: 3}
       propertyPath: m_Name
