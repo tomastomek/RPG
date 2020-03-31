@@ -18,7 +18,7 @@ namespace RPG.Combat
         Weapon currentWeapon = null;
         Animator animator;
 
-        private void Start()
+        private void Awake()
         {
             mover = GetComponent<Mover>();
             animator = GetComponent<Animator>();
