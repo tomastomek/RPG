@@ -1,4 +1,5 @@
 ﻿using RPG.Saving;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,11 @@ namespace RPG.Resources
         public void GainExperience(float experience)
         {
             experiencePoints += experience;
+        }
+
+        public string GetPoints()
+        {
+            return experiencePoints.ToString();
         }
 
         public object CaptureState()

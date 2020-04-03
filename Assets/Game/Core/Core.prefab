@@ -264,11 +264,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3292455593871482147}
     m_Modifications:
-    - target: {fileID: 1129863334332153842, guid: 43f42600706ea7549b69676d39d88480,
-        type: 3}
-      propertyPath: m_Name
-      value: Player health label
-      objectReference: {fileID: 0}
     - target: {fileID: 1160998261394696902, guid: 43f42600706ea7549b69676d39d88480,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -374,45 +369,10 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1353266344291250107, guid: 43f42600706ea7549b69676d39d88480,
-        type: 3}
-      propertyPath: m_Text
-      value: 'Enemy:'
-      objectReference: {fileID: 0}
-    - target: {fileID: 5415911579240678731, guid: 43f42600706ea7549b69676d39d88480,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 93.57001
-      objectReference: {fileID: 0}
-    - target: {fileID: 5415911579240678731, guid: 43f42600706ea7549b69676d39d88480,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -52.700027
-      objectReference: {fileID: 0}
-    - target: {fileID: 5946725902034832851, guid: 43f42600706ea7549b69676d39d88480,
-        type: 3}
-      propertyPath: m_Name
-      value: Enemy health value
-      objectReference: {fileID: 0}
     - target: {fileID: 6787452853984268885, guid: 43f42600706ea7549b69676d39d88480,
         type: 3}
       propertyPath: m_Name
       value: HUD
-      objectReference: {fileID: 0}
-    - target: {fileID: 8146325714912597343, guid: 43f42600706ea7549b69676d39d88480,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -52.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8331420600764006201, guid: 43f42600706ea7549b69676d39d88480,
-        type: 3}
-      propertyPath: m_Name
-      value: Player health value
-      objectReference: {fileID: 0}
-    - target: {fileID: 8851667565695278827, guid: 43f42600706ea7549b69676d39d88480,
-        type: 3}
-      propertyPath: m_Name
-      value: Enemy health label
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43f42600706ea7549b69676d39d88480, type: 3}
@@ -437,7 +397,7 @@ PrefabInstance:
     - target: {fileID: 1226789885367078079, guid: d974e16a9c00e85488003d5271f04ca0,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 67.096634
+      value: 66.41663
       objectReference: {fileID: 0}
     - target: {fileID: 1226789885367078079, guid: d974e16a9c00e85488003d5271f04ca0,
         type: 3}
@@ -447,7 +407,7 @@ PrefabInstance:
     - target: {fileID: 1226789885367078079, guid: d974e16a9c00e85488003d5271f04ca0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 66.038376
+      value: 67.36838
       objectReference: {fileID: 0}
     - target: {fileID: 1226789885367078079, guid: d974e16a9c00e85488003d5271f04ca0,
         type: 3}
